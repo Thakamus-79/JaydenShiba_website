@@ -50,8 +50,9 @@ st.write("Ask me anything about me:specific jayden shiba from power ranger for a
 user_question = st.text_input("Enter your question here:")
 if st.button("Ranger Archive", use_container_width=400):
     prompt = persona + user_question
-    response = model.generate_content(prompt)
-    st.write(response.text)
+    #response = model.generate_content(prompt)
+    st.write(str(type(persona + user_question)))
+
 
 st.title(" ")
 
