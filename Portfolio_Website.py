@@ -1,9 +1,8 @@
 import streamlit as st
 import google.generativeai as genai
 
-Tk_Shiba = st.secrets["GOOGLE_API_KEY"]
-
-genai.configure(api_key="Tk_Shiba")
+api_key = st.secrets["GOOGLE_API_KEY"]
+genai.configure(api_key= api_key)
 model = genai.GenerativeModel('gemini-1.5-flash')
 
 
@@ -51,8 +50,7 @@ user_question = st.text_input("Enter your question here:")
 if st.button("Ranger Archive", use_container_width=400):
     prompt = persona + user_question
     response = model.generate_content(prompt)
-    st.write(str(type(persona + user_question)))
-
+    st.write(response.text)
 
 st.title(" ")
 
