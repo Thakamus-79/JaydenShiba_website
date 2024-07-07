@@ -44,7 +44,7 @@ persona = (""
            " Jaydens email is  contact@EnriqueToons.com")
 
 st.title("Jayden Shiba's AI Bot")
-st.write("Ask me anything about me:specific jayden shiba from power ranger for any related questions to him.")
+st.write("Ask me anything:")
 
 
 # Text input for questions
