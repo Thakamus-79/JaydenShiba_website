@@ -1,12 +1,25 @@
 import streamlit as st
 import google.generativeai as genai
+import PIL
+from PIL import Image
 
-api_key = st.secrets["GOOGLE_API_KEY"]
-genai.configure(api_key= api_key)
+
+# api_key = st.secrets["GOOGLE_API_KEY"]
+# genai.configure(api_key= api_key)
 model = genai.GenerativeModel('gemini-1.5-flash')
 
+def resize_image(image_path, size):
+    img = Image.open(image_path)
+    img = img.resize(size)
+    return img
 
 
+desired_size = (300, 300)  # Change this size as needed
+
+# Resize the images
+image1 = resize_image("images/Shinken Red.jpg", desired_size)
+# image2 = resize_image("images/images.jpg", desired_size)
+image3 = resize_image("images/jjay.jpg", desired_size)
 
 # Streamlit app layout
 col1, col2, col3 = st.columns(3)
@@ -16,21 +29,11 @@ with col1:
     st.title("I am Jayden Shiba")
 
 with col2:
-    st.image("images/jayden.gif")
+    st.image(image1)
 
 with col3:
-    st.subheader(":crossed_swords: This ends now! :crossed_swords:")
-
-st.title(" ")
-st.title(" ")
-with col2:
-    st.image("images/images.jpg")
-
-with col3:
-    st.image("images/jjay.jpg")
-st.title(" ")
-with col3:
-    st.image("images/Shinken Red.jpg")
+    st.image(image3)
+st.markdown('<hr style="border:3px solid red">', unsafe_allow_html=True)
 
 persona = (""
            "You are Jayden Shiba's AI bot. you help people answer questions about your self, Jayden Shiba of the samurai rangers,you also build new lore and story surunding Jayden Shiba the power ranger (i.e Jayden Shiba)."
@@ -44,7 +47,7 @@ persona = (""
            " Jaydens email is  contact@EnriqueToons.com")
 
 st.title("Jayden Shiba's AI Bot")
-st.write("Ask me anything:")
+st.write("Ask me anything about me:specific jayden shiba from power ranger for any related questions to him.")
 
 
 # Text input for questions
